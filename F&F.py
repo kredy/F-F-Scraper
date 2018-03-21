@@ -4,10 +4,8 @@ Performs cosine similarity and prints the appropriate headlines
 
 '''
 
-
-import football_news
-import f1_news
-from process import TextProcess
+from core import f1_news, football_news
+from core.process import TextProcess
 
 
 def main():
@@ -15,36 +13,33 @@ def main():
     # Get football headlines
     print('Fetching football headlines... ')
     try:
-	    news_football = football_news.GetNews()
-	    fo_guardian_news = news_football.get_guardian_news()
-	    fo_independent_news = news_football.get_independent_news()
-	    fo_metro_news = news_football.get_metro_news()
-	    print('Done!')
+        news_football = football_news.GetNews()
+        fo_guardian_news = news_football.get_guardian_news()
+        fo_independent_news = news_football.get_independent_news()
+        fo_metro_news = news_football.get_metro_news()
+        print('Done!')
     except:
         print('Cannot connect to the source.')
         print('\tMake sure that there is a working internet connection.')
         print('\tEnsure that the website is not down.')
         print('\tCheck whether the url to be connected is valid.')
-
 
     # Get F1 headlines
     print('Fetching Formula 1 headlines... ')
     try:
-	    news_f1 = f1_news.GetNews()
-	    f1_guardian_news = news_f1.get_guardian_news()
-	    f1_independent_news = news_f1.get_independent_news()
-	    f1_bbc_news = news_f1.get_bbc_news()
-	    print('Done!')
+        news_f1 = f1_news.GetNews()
+        f1_guardian_news = news_f1.get_guardian_news()
+        f1_independent_news = news_f1.get_independent_news()
+        f1_bbc_news = news_f1.get_bbc_news()
+        print('Done!')
     except:
         print('Cannot connect to the source.')
         print('\tMake sure that there is a working internet connection.')
         print('\tEnsure that the website is not down.')
         print('\tCheck whether the url to be connected is valid.')
 
-
     text_process = TextProcess()
 
-    
     # Final football news
     print('Finding the ideal mix... ')
     fo_final_news = {}
@@ -103,6 +98,6 @@ def main():
 
 if __name__ == '__main__':
     try:
-    	main()
+        main()
     except:
-    	print('Error in code. Please inspect the code if it is modified.')
+        print('Error in code. Please inspect the code if it is modified.')
